@@ -1,7 +1,7 @@
 {
-    "name": "eventmate-app",
+    "name": "event-service",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "apps/eventmate-app/src",
+    "sourceRoot": "apps/event-service/src",
     "projectType": "application",
     "tags": [],
     "targets": {
@@ -10,7 +10,7 @@
             "options": {
                 "command": "webpack-cli build",
                 "args": ["--node-env=production"],
-                "cwd": "apps/eventmate-app"
+                "cwd": "apps/event-service"
             },
             "configurations": {
                 "development": {
@@ -23,8 +23,8 @@
             "cache": true,
             "executor": "@nx/js:prune-lockfile",
             "outputs": [
-                "{workspaceRoot}/dist/apps/eventmate-app/package.json",
-                "{workspaceRoot}/dist/apps/eventmate-app/package-lock.json"
+                "{workspaceRoot}/dist/apps/event-service/package.json",
+                "{workspaceRoot}/dist/apps/event-service/package-lock.json"
             ],
             "options": {
                 "buildTarget": "build"
@@ -33,7 +33,7 @@
         "copy-workspace-modules": {
             "dependsOn": ["build"],
             "cache": true,
-            "outputs": ["{workspaceRoot}/dist/apps/eventmate-app/workspace_modules"],
+            "outputs": ["{workspaceRoot}/dist/apps/event-service/workspace_modules"],
             "executor": "@nx/js:copy-workspace-modules",
             "options": {
                 "buildTarget": "build"
@@ -49,15 +49,15 @@
             "defaultConfiguration": "development",
             "dependsOn": ["build"],
             "options": {
-                "buildTarget": "eventmate-app:build",
+                "buildTarget": "event-service:build",
                 "runBuildTargetDependencies": false
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "eventmate-app:build:development"
+                    "buildTarget": "event-service:build:development"
                 },
                 "production": {
-                    "buildTarget": "eventmate-app:build:production"
+                    "buildTarget": "event-service:build:production"
                 }
             }
         }
